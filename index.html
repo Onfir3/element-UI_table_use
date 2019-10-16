@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title></title>
+
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <style>
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            padding-top: 0px;
+
+            padding-right: 0px;
+
+            padding-bottom: 0px;
+
+            padding-left: 0px;
+
+        }
+
+        body {
+
+            font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            color: #495060;
+
+            background-color: #fff;
+
+            -webkit-font-smoothing: antialiased;
+
+            -moz-osx-font-smoothing: grayscale;
+
+            background-color: #fff;
+
+        }
+        .el-table .cell {
+            text-align: center;
+        }
+        .el-input--mini .el-input__inner {
+            text-align: center;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app"> 
+        <!-- <el-dialog title="新增表格" :visible.sync="dialogFormVisible">
+            <el-form :model="form" status-icon :rules="rules" ref="form">
+              <el-form-item label="English" :label-width="formLabelWidth" prop="English">
+                <el-input v-model="form.English" autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="Chinese" :label-width="formLabelWidth" prop="Chinese">
+                <el-input v-model="form.Chinese" autocomplete="off"></el-input>
+              </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+              <el-button size="mini" @click="dialogFormVisible = false">取 消</el-button>
+              <el-button type="primary" size="mini" @click="addDemo">确 定</el-button>
+            </div>
+        </el-dialog> -->
+        <el-table :data="tableData" size="mini" highlight-current-row border style="width: 100%" class="el-tb-edit" >
+
+            <el-table-column prop="English" label="英语" width="300" >
+
+                <template slot-scope="scope">
+                    <el-input size="mini" v-model="scope.row.English" placeholder="请输入内容"></el-input>
+
+                </template>
+
+            </el-table-column>
+
+            <el-table-column prop="Chinese" label="中文" width="300">
+
+                <template slot-scope="scope">
+                    <el-input size="mini" v-model="scope.row.Chinese" placeholder="请输入内容"></el-input>
+
+                </template>
+
+            </el-table-column>
+
+            <el-table-column label="操作" width="200">
+
+                <template slot-scope="scope">
+
+                    <el-button size="mini" type="primary" v-if="scope.row.id !== undefined"  @click="addDemo(scope.row)">新增</el-button>
+                    <el-button size="mini" type="danger" v-if="scope.row.id === undefined" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+
+                </template>
+
+            </el-table-column>
+
+        </el-table>
+    </div>
+
+    <script>
+            new Vue({
+                el: '#app',
+                data :{
+                    tableData: [
+                        {
+                            English:'',
+                            Chinese:'',
+                            id: '1'
+                        },
+                        {
+                            English: 'apple',
+                            Chinese: '苹果'
+                        },
+                        {
+                            English: 'banana',
+                            Chinese: '香蕉'
+                        }
+                    ],
+                    currentRow: null,
+                    submit: []
+                    // dialogFormVisible: false,
+                    // form: [{
+                    //     English: '',
+                    //     Chinese: '',
+                    //     // delivery: false,
+                    //     // type: [],
+                    //     // resource: '',
+                    //     // desc: ''
+                    // }],
+                    // formLabelWidth: '120px',
+                    // rules: {
+                    //     English: [
+                    //         {
+                    //             required: true,
+                    //             message: '输入框不能为空',
+                    //             trigger: 'blur',
+                    //         }
+                    //     ],
+                    //     Chinese: [
+                    //         {
+                    //             required: true,
+                    //             message: '输入框不能为空',
+                    //             trigger: 'blur'
+                    //         }
+                    //     ]
+                    // },
+                 
+                },
+
+                methods: {
+
+                    addDemo(row) {
+                        // var Lan = {
+                        //     English: '',
+
+                        //     Chinese: '',
+                        // };
+                        // if (!this.tableData.English) {
+                        //     alert('输入框不能为空')
+                        // }else if(!this.tableData.Chinese){
+                        //     alert('输入框不能为空')
+                        // }else{
+                        // this.dialogFormVisible = false
+                        let res = row 
+                        if(row.English === '' || row.Chinese === ''){
+                            return this.$message.warning('输入框不可为空!')
+                            console.log('111')
+                        }else{
+                        this.tableData.push({
+                            English: row.English,
+                            Chinese: row.Chinese
+                        })
+                        row.English = ''
+                        row.Chinese = ''
+                        // this.form = {}
+                        // setTimeout(() => { this.$refs.demoTable.setCurrentRow(); }, 10)
+                        }
+                        
+                        
+                        
+                        
+                        // }
+
+                        
+                    },
+
+                    handleDelete(index, row) {
+                        this.tableData.splice(index, 1)
+                    },
+                }
+            });
+    </script>
+
+</body>
+
+</html>
