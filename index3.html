@@ -9,80 +9,24 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <style>
-            * {
-              box-sizing: border-box;
-            }
-            .text {
-              font-size: 14px;
-            }
-          
-            .item {
-              margin-bottom: 18px;
-            }
-          
+            * {box-sizing: border-box;}
+            .text { font-size: 14px;}
+            .item {margin-bottom: 18px;}
             .clearfix:before,
-            .clearfix:after {
-              display: table;
-              content: "";
-            }
-            .clearfix:after {
-              clear: both
-            }
-          
-            .box-card {
-              width: 480px;
-            }
-            .type_ul {
-              list-style: none;
-              max-height: 670ps;
-              overflow-y: auto;
-              padding: 0px;
-            }
-            ul >li {
-                display: table;
-                width: 100%;
-                cursor: pointer;
-                border-bottom: 1px solid #111;
-                padding-top: 0px;
-            }
-            .type_ul > li > i {
-              text-align: center;
-              width: 15%;
-              font-size: 20px;
-              display: block;
-              margin: auto;
-              color:blueviolet;
-            }
-            .type_ul > li:hover {
-              background: rgb(221, 162, 223);
-              color: #fff;
-            }
-            .type_ul > li.active {
-              color: #fff;
-              background:rgb(221, 162, 223);
-            }
-            .type_ul >li > div {
-              display: table-cell;
-              line-height: 40px;
-              text-align: center;
-              width: 60%;
-              font-size:14px;
-            }
-            .card {
-              position: relative;
-            }
-            .card_1 {
-              position: absolute;
-            }
-            .card_2 {
-              position: absolute;
-              margin-left: 500px;
-            }
-            .card_3 {
-              position: absolute;
-              margin-left: 1000px;
-            }
-        </style> 
+            .clearfix:after {display: table;content: "";}
+            .clearfix:after {clear: both }
+            .box-card {width: 480px; }
+            .type_ul { list-style: none; max-height: 670ps; overflow-y: auto; padding: 0px;}
+            ul >li { display: table;width: 100%; cursor: pointer; border-bottom: 1px solid #111; padding-top: 0px;}
+            .type_ul > li > i {text-align: center;width: 15%; font-size: 20px;display: block;margin: auto; color:blueviolet;}
+            .type_ul > li:hover { background: rgb(221, 162, 223); color: #fff;}
+            .type_ul > li.active { color: #fff; background:rgb(221, 162, 223);}
+            .type_ul >li > div {display: table-cell; line-height: 40px; text-align: center;width: 60%;font-size:14px;}
+            .card { position: relative; }
+            .card_1 { position: absolute;}
+            .card_2 { position: absolute; margin-left: 500px; }
+            .card_3 { position: absolute; margin-left: 1000px; }
+    </style> 
 </head>
 <body>
     <div id="app" class="card">
